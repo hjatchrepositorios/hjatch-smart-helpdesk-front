@@ -1,0 +1,8 @@
+{
+  "realm": "hjatch",
+  "auth-server-url": "http://192.168.0.13:9999/auth",
+  "ssl-required": "external",
+  "resource": "smarthelpdesk",
+  "public-client": true,
+  "confidential-port": 0
+}
