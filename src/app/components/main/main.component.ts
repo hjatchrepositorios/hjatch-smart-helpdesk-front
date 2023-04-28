@@ -11,7 +11,6 @@ import { KeycloakProfile } from 'keycloak-js';
 })
 export class MainComponent {
   userProfile: KeycloakProfile | null = null;
-  users: any[] = [];
   constructor(private keycloakService: KeycloakService) {}
   ngOnInit() {
     this.keycloakService.loadUserProfile().then((userProfile: KeycloakProfile) => {
@@ -21,7 +20,6 @@ export class MainComponent {
     });
 
   }
-
   logout() {
     this.keycloakService.logout();
   }

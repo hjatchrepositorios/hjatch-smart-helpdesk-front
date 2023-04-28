@@ -1,47 +1,129 @@
-<div class="card">
-    <h5 class="card-header">Featured</h5>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+
+  <div class="contenedor">
+    <div class="inicio">
+      <button type="button" class="btn btn-primary m-2">
+        Mis Tickets <span class="badge text-bg-secondary">4</span>
+      </button>
+    </div>
+    <div class="fin">
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearTicketModal">
+        CREAR TICKET
+      </button>
     </div>
   </div>
-
+  <label for="buscador" class="form-label">Buscar Ticket</label> 
+  
+  <input class="form-control" id="buscador" placeholder="Ingresa el codigo de ticket para buscar...">
+  
   <table class="table table-hover">
     <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col"># TICKET</th>
+        <th scope="col">TITULO</th>
+        <th scope="col">ASIGNADO A</th>
+        <th scope="col">FECHA Y HORA</th>
+        <th scope="col">ACCIONES</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <th scope="row">182327</th>
+        <td>Problemas de conectividad</td>
+        <td>Felipe Moran</td>
+        <td>25-06-2023 15:45</td>
+        <td><button type="button" class="btn btn-primary">Tomar</button>
+          <button type="button" class="btn btn-secondary">Derivar</button>
+          <button type="button" class="btn btn-success">Culminar</button></td>
       </tr>
       <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
+        <th scope="row">182327</th>
+        <td>Problemas de conectividad</td>
+        <td>Felipe Moran</td>
+        <td>25-06-2023 15:45</td>
+        <td><button type="button" class="btn btn-primary">Tomar</button>
+          <button type="button" class="btn btn-secondary">Derivar</button>
+          <button type="button" class="btn btn-success">Culminar</button></td>
+      </tr><tr>
+        <th scope="row">182327</th>
+        <td>Problemas de conectividad</td>
+        <td>Felipe Moran</td>
+        <td>25-06-2023 15:45</td>
+        <td><button type="button" class="btn btn-primary">Tomar</button>
+          <button type="button" class="btn btn-secondary">Derivar</button>
+          <button type="button" class="btn btn-success">Culminar</button></td>
       </tr>
     </tbody>
   </table>
-  <h1>Bienvenido a mi aplicación</h1>
-  <button (click)="logout()">Cerrar sesión</button>
-  <div *ngIf="userProfile">
-    <p>Nombre: {{ userProfile.firstName }} {{ userProfile.lastName }}</p>
-    <p>Correo electrónico: {{ userProfile.email }}</p>
-    <p>Prueba: {{userProfile|json}}</p>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+
+
+
+
+
+
+
+<!-- Modal Crear Ticket-->
+<div class="modal fade" id="crearTicketModal" tabindex="-1" aria-labelledby="crearTicketModalL" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="crearTicketModalL">Crear Ticket</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Título</label>
+          <input type="email" class="form-control" id="titulo" placeholder="Ingresa el título del Ticket">
+        </div>
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción</label>
+          <textarea class="form-control" id="descripcion" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="adjuntar" class="form-label">Adjuntar archivo?</label>
+          <input class="form-control" type="file" id="adjuntar">
+        </div>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Selecciona categoria</option>
+            <option value="1">Soporte Técnico</option>
+            <option value="2">Incidencias</option>
+            <option value="2">Solicitudes de Servicio</option>
+            <option value="3">Consultas generales</option>
+            <option value="3">Mantenimiento Preventivo</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Selecciona prioridad</option>
+            <option value="1">Prioridad Baja</option>
+            <option value="2">Prioridad Media</option>
+            <option value="3">Prioridad Alta</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Asignar a</option>
+            <option value="1">Felipe Moran</option>
+            <option value="2">Christian Inga</option>
+            <option value="3">Arturo Zorrilla</option>
+            <option value="3">Miguel Hilario</option>
+            <option value="3">Carlos Uribe</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
   </div>
-
-
+</div>
