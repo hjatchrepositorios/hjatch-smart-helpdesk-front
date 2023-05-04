@@ -39,6 +39,7 @@
         <th scope="col">TITULO</th>
         <th scope="col">ASIGNADO A</th>
         <th scope="col">FECHA Y HORA</th>
+        <th scope="col">ESTADO</th>
         <th scope="col">ACCIONES</th>
       </tr>
     </thead>
@@ -46,11 +47,27 @@
       <tr *ngFor="let ticket of tickets$,index as i">
         <th scope="row">{{ticket.id.slice(-8)}}</th>
         <td>{{ticket.title}}</td>
-        <td>{{ticket.description}}</td>
+        <td>{{ticket.assignedTo?.name+' '+ticket.assignedTo?.surname}}</td>
         <td>{{ticket.createdAt| date: 'HH:mm:ss dd-MM-yyyy '}}</td>
-        <td><button type="button" class="btn btn-primary">Tomar</button>
+        <td>
+          <button [ngClass]="{'btn btn-primary':(ticket.status=='OPEN')}">{{ticket.status}}</button>
+        </td>
+        <!-- <td><button type="button" class="btn btn-primary">Tomar</button>
           <button type="button" class="btn btn-secondary">Derivar</button>
-          <button type="button" class="btn btn-success">Culminar</button></td>
+          <button type="button" class="btn btn-success">Culminar</button></td> -->
+          <td>
+            <div class="dropdown">
+              <a class="btn btn-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                +
+              </a>
+            
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Tomar</a></li>
+                <li><a class="dropdown-item" href="#">Asignar</a></li>
+                <li><a class="dropdown-item" href="#">Culminar</a></li>
+              </ul>
+            </div>
+          </td>
       </tr>
       
     </tbody>
@@ -82,31 +99,20 @@
           <input class="form-control" type="file" id="adjuntar">
         </div>
         <div class="mb-3">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Selecciona categoria</option>
-            <option value="1">Soporte Técnico</option>
-            <option value="2">Incidencias</option>
-            <option value="2">Solicitudes de Servicio</option>
-            <option value="3">Consultas generales</option>
-            <option value="3">Mantenimiento Preventivo</option>
+          <select class="form-select" aria-label="Default select example" formControlName="category">
+            <option *ngFor="let categoria of categorias" [ngValue]="categoria">{{categoria.name}}</option>
           </select>
         </div>
         <div class="mb-3">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Selecciona prioridad</option>
+          <select class="form-select" aria-label="Default select example" formControlName="priority">
             <option value="1">Prioridad Baja</option>
             <option value="2">Prioridad Media</option>
             <option value="3">Prioridad Alta</option>
           </select>
         </div>
         <div class="mb-3">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Asignar a</option>
-            <option value="1">Felipe Moran</option>
-            <option value="2">Christian Inga</option>
-            <option value="3">Arturo Zorrilla</option>
-            <option value="3">Miguel Hilario</option>
-            <option value="3">Carlos Uribe</option>
+          <select class="form-select" aria-label="Default select example" formControlName="assignedTo">
+            <option *ngFor="let usuario of usuarios" [ngValue]="usuario">{{usuario.name+' '+usuario.surname}}</option>
           </select>
         </div>
         <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
@@ -115,6 +121,3 @@
     </div>
   </div>
 </div>
-
-
-

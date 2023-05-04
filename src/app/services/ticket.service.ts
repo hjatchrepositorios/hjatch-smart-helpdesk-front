@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/enviroments/enviroment';
+import { Ticket } from '../models/ticket';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class TicketService {
   url=environment.apiBaseUrl
   constructor(private http:HttpClient) { }
 
-  crear(ticket:any):Observable<any>{
+  crear(ticket:Ticket):Observable<any>{
     return this.http.post(`${this.url+'/api/tickets'}`,ticket)
   }
   obtenerTickets(): Observable<any> {

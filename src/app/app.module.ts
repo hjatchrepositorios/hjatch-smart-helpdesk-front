@@ -8,6 +8,7 @@ import { MainComponent } from './components/main/main.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TablesComponent } from './components/tables/tables.component';
 function initializeKeycloack(keycloak:KeycloakService){
   return () =>
     keycloak.init({
@@ -23,7 +24,7 @@ function initializeKeycloack(keycloak:KeycloakService){
     })
 }
 @NgModule({
-  declarations: [AppComponent, MainComponent],
+  declarations: [AppComponent, MainComponent, TablesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

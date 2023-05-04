@@ -4,6 +4,10 @@ import { KeycloakService } from 'keycloak-angular';
 import { KeycloakProfile } from 'keycloak-js';
 import { TicketService } from 'src/app/services/ticket.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CategoryService } from '../../services/category.service';
+import { Category } from 'src/app/models/category';
+import { Ticket } from 'src/app/models/ticket';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-main',
@@ -21,9 +25,13 @@ export class MainComponent {
   today: Date = new Date();
   startDate:any;
   endDate:any;
+  categorias!:Category[];
+  usuarios!:any;
   @ViewChild('ticketModal') ticketModal: any;
   constructor(private keycloakService: KeycloakService,
     private ticketService: TicketService,
+    private categoryService:CategoryService,
+    private userService: UserService,
     private formBuilder: FormBuilder
   ) { }
   ngOnInit() {
@@ -35,10 +43,14 @@ export class MainComponent {
     this.formulario = this.formBuilder.group({
       title: ['', Validators.required],
       description: ['', [Validators.required]],
+      priority: [],
+      category: [],
+      assignedTo:[],
     });
     this.getTodayFormatted();
     this.obtenerTickets();
-    
+    this.obtenerCategorias();
+    this.obtenerUsuarios();
   }
   logout() {
     this.keycloakService.logout();
@@ -55,7 +67,7 @@ export class MainComponent {
     )
   }
   onSubmit() {
-    console.log(this.formulario.value);
+    console.log(this.formulario.value)
     this.crear(this.formulario.value);
   }
   obtenerTickets() {
@@ -69,6 +81,22 @@ export class MainComponent {
         this.totalPages = response.totalPages;
         this.tickets$ = response['content']
       });
+  }
+  obtenerCategorias(){
+    this.categoryService.obtenerTodos().subscribe((data:any)=>{
+      this.categorias=data
+    },
+    (error:any)=>{
+      console.log(error)
+    })
+  }
+  obtenerUsuarios(){
+    this.userService.obtenerTodos().subscribe((data:any)=>{
+      this.usuarios=data
+    },
+    (error:any)=>{
+      console.log(error)
+    })
   }
 
   isFirstPage(): boolean {

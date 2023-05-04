@@ -1,0 +1,91 @@
+<div class="content">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <h5 class="card-header">Categorias</h5>
+          <div class="card-body">
+            <div class="row mb-3">
+              <div class="col-6">
+                <h5 class="card-title">Lista de Categorias</h5>
+              </div>
+              <div class="col-6 text-end">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Agregar
+                </button>
+              </div>
+            </div> 
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let category of categories,index as i">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{category.name}}</td>
+                  <td>@mdo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col">
+        <div class="card">
+          <h5 class="card-header">Personal</h5>
+          <div class="card-body">
+            <h5 class="card-title">Lista de Personal</h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                  <label for="titulo" class="form-label">Nombre</label>
+                  <input type="email" class="form-control" id="titulo" placeholder="Ingresa el nombre de la categira" formControlName="name">
+                </div>
+                
+                <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </form>
+        </div>
+      </div>
+    </div>
+  </div>
