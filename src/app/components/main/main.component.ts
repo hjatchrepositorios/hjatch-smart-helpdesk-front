@@ -137,4 +137,11 @@ export class MainComponent {
     return n < 10 ? '0' + n : '' + n;
   }
 
+  misTickets(){
+    if(this.userProfile?.id){
+      this.ticketService.getTicketsByAssingToAndStatus(this.userProfile?.id,this.currentPage, 10).subscribe((data:any)=>{
+        this.tickets$=data['content']
+      })
+    }
+  }
 }

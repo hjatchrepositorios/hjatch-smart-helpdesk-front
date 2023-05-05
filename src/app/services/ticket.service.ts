@@ -21,4 +21,11 @@ export class TicketService {
     const params = { start, end, page, size };
     return this.http.get(`${this.url+'/api/tickets'}`, { params });
   }
+  getTicketsByAssingToAndStatus(idKeycloak: string, page: number, size: number, status?: string) {
+    let params: any = { page, size };
+    if (status) {
+      params.status = status;
+    }
+    return this.http.get(`${this.url+'/api/tickets/keycloak/'+idKeycloak}`, { params });
+  }
 }
