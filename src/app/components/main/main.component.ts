@@ -91,7 +91,7 @@ export class MainComponent {
     })
   }
   obtenerUsuarios(){
-    this.userService.obtenerTodos().subscribe((data:any)=>{
+    this.userService.obtenerTodosPorEstado("active").subscribe((data:any)=>{
       this.usuarios=data
     },
     (error:any)=>{

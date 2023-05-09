@@ -19,6 +19,9 @@ export class UserService {
   obtenerTodos():Observable<any>{
     return this.http.get(`${this.url+'/api/users'}`);
   }
+  obtenerTodosPorEstado(estado:string):Observable<any>{
+    return this.http.get(`${this.url+'/api/users/status/'+estado}`);
+  }
   obtenerPorIdKeycloak(id:any): Observable<any> {
     return this.http.get(`${this.url+'/api/users/idKeycloak/'+id}`);
   }

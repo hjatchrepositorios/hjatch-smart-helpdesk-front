@@ -1,5 +1,5 @@
 
-  
+
     <div class="row">
       <div class="col">
         <div class="form-group">
@@ -14,7 +14,7 @@
           </button>
         </div>
       </div>
-      
+
       <div class="col">
         <div class="fin">
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearTicketModal">
@@ -23,15 +23,15 @@
         </div>
       </div>
     </div>
-    
-    
-    
 
-  
-  <label for="buscador" class="form-label">Buscar Ticket</label> 
-  
+
+
+
+
+  <label for="buscador" class="form-label">Buscar Ticket</label>
+
   <input class="form-control" id="buscador" placeholder="Ingresa el codigo de ticket para buscar...">
-  
+
   <table class="table table-hover">
     <thead>
       <tr>
@@ -39,6 +39,7 @@
         <th scope="col">TITULO</th>
         <th scope="col">ASIGNADO A</th>
         <th scope="col">FECHA Y HORA</th>
+        <th scope="col">HORA ASIGNACION TEST</th>
         <th scope="col">ESTADO</th>
         <th scope="col">ACCIONES</th>
       </tr>
@@ -49,6 +50,7 @@
         <td>{{ticket.title}}</td>
         <td>{{ticket.assignedTo?.name+' '+ticket.assignedTo?.surname}}</td>
         <td>{{ticket.createdAt| date: 'HH:mm:ss dd-MM-yyyy '}}</td>
+        <td>{{ticket.assignmentDate| date: 'HH:mm:ss dd-MM-yyyy '}}</td>
         <td>
           <button [ngClass]="{'btn btn-primary':(ticket.status=='OPEN')}">{{ticket.status}}</button>
         </td>
@@ -60,7 +62,7 @@
               <a class="btn btn-info dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 +
               </a>
-            
+
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">Tomar</a></li>
                 <li><a class="dropdown-item" href="#">Asignar</a></li>
@@ -69,7 +71,7 @@
             </div>
           </td>
       </tr>
-      
+
     </tbody>
   </table>
   <button class="btn btn-primary" (click)="prevPage()" [disabled]="isFirstPage()">Previous</button>

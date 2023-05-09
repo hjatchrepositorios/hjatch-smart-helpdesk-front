@@ -1,12 +1,13 @@
 import { Category } from "./category";
+import { User } from './user';
 
 export interface Ticket {
     id?: string;
     title: string;
     description: string;
     createdBy?: string;
-    //assignedTo: User;
-    //assignmentDate: Date;
+    assignedTo?: User;
+    assignmentDate?: Date;
     priority: string;
     category: Category;
     // comments: Comment[];
@@ -15,4 +16,3 @@ export interface Ticket {
     createdAt?: string;
     updatedAt?: string;
   }
-  

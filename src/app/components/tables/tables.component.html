@@ -13,7 +13,7 @@
                   Agregar
                 </button>
               </div>
-            </div> 
+            </div>
             <table class="table">
               <thead>
                 <tr>
@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-  
+
       <div class="col">
         <div class="card">
           <h5 class="card-header">Personal</h5>
@@ -43,16 +43,16 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">First</th>
-                  <th scope="col">Last</th>
+                  <th scope="col">Nombres</th>
+                  <th scope="col">Apellidos</th>
                   <th scope="col">Handle</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                <tr *ngFor="let user of users,index as i">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{user.name}}</td>
+                  <td>{{user.surname}}</td>
                   <td>@mdo</td>
                 </tr>
               </tbody>
@@ -67,7 +67,7 @@
 
 <!-- Button trigger modal -->
 
-  
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -82,7 +82,7 @@
                   <label for="titulo" class="form-label">Nombre</label>
                   <input type="email" class="form-control" id="titulo" placeholder="Ingresa el nombre de la categira" formControlName="name">
                 </div>
-                
+
                 <button type="submit" [disabled]="formulario.invalid" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
               </form>
         </div>
